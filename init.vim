@@ -7,8 +7,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set showcmd
-set t_Co=256
-syntax on 
+
 filetype plugin on
 
 call plug#begin('~/.vim/plugged')
@@ -26,20 +25,24 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 set laststatus=2
-colorscheme minimalist
-
 let g:airline_theme='minimalist'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-
 let g:coc_global_extensions = ['coc-html','coc-css','coc-json','coc-tslint-plugin','coc-tsserver','coc-prettier']
 
-
-" highlight Normal ctermfg=white ctermbg=black guibg=#000000
-
-"nnoremap <C-p> :find 
-"nnoremap <C-p> :FZF<CR> 
+set t_Co=256
+set background=dark
+set termguicolors
+syntax on 
+colorscheme minimalist
+hi Normal ctermbg=NONE guibg=NONE
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+set fillchars=vert:\│,eob:\ 
 nnoremap <C-f> :Ag<CR>
+nnoremap <C-g> :GFiles<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-b> :Buffers<CR> 
 nnoremap ,html :-1read $HOME/.config/nvim/snippets/skeleton.html<CR> 
@@ -56,4 +59,4 @@ nnoremap t :bn<CR>
 au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
- 
+
