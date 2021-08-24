@@ -24,22 +24,32 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
-set laststatus=2
-let g:airline_theme='minimalist'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:coc_global_extensions = ['coc-html','coc-css','coc-json','coc-tslint-plugin','coc-tsserver','coc-prettier']
-
 set t_Co=256
 set background=dark
 set termguicolors
 syntax on 
+
+set laststatus=2
+" let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:coc_global_extensions = ['coc-html','coc-css','coc-json','coc-tslint-plugin','coc-tsserver','coc-prettier']
+
+" set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 colorscheme minimalist
+
 hi Normal ctermbg=NONE guibg=NONE
 hi Normal guibg=NONE ctermbg=NONE
 hi LineNr guibg=NONE ctermbg=NONE
 hi SignColumn guibg=NONE ctermbg=NONE
 hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+
+
+
 set fillchars=vert:\│,eob:\ 
 nnoremap <C-f> :Ag<CR>
 nnoremap <C-g> :GFiles<CR>
@@ -48,8 +58,6 @@ nnoremap <C-b> :Buffers<CR>
 nnoremap ,html :-1read $HOME/.config/nvim/snippets/skeleton.html<CR> 
 nnoremap ,rfc  :-1read $HOME/.config/nvim/snippets/react.js<CR>
 nnoremap <C-a> ggVG
-nnoremap <C-right> $
-nnoremap <C-left> 0
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-s> :w<CR> 
 nnoremap t :bn<CR>
@@ -58,5 +66,4 @@ nnoremap t :bn<CR>
 " MAP ESCAPE TO CAPS LOCK in vim 
 au VimEnter * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 au VimLeave * :silent !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-
 
